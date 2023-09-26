@@ -32,29 +32,59 @@ players = [
     Player("m"),
 ]
 
+#for each student1
+    #query pairs for student1
+    #get id for top 3 student2's
+    #adjustfrequencies(student1)
+
+
+#get frequencies
+    #for each student that isn't a
+
+
+
+frequencies = {
+    "a":[(b,2),(c,1),(d,0)]
+    "b":{
+        "a":2,
+        "c":1,
+        "m":0,
+       }
+}
+
+frequencies.b.values()
+frequencies.a.sorted(val=>val[1])
 a, b, c, m = players
 
-# jerry.set_prefs([george, elaine, kramer])
-# george.set_prefs([jerry, kramer, elaine])
-# elaine.set_prefs([jerry, kramer, george])
-# kramer.set_prefs([elaine, george, jerry])
 
 a.set_prefs([b, c, m])
 b.set_prefs([c, a, m])
 c.set_prefs([a, b, m])
 m.set_prefs([a, b, c])
 
-pairs = None
 
-while not pairs:
-    try:
-        game = StableRoommates(players)
-        pairs = game.solve()
-    except NoStableMatchingWarning as exc:
-        handle_no_match()
+def adjust_preferences(student, top_three):
+    #find top_three[2]
+        #bump -1
+    #find top_three[1]
+        #bump -2
+    #find top_three[0] (first place)
+        #bump them down 3 spaces
 
 
-print(pairs)
+def get_pairs():
+    pairs = None
+
+    while not pairs:
+        try:
+            game = StableRoommates(players)
+            pairs = game.solve()
+        except NoStableMatchingWarning as exc:
+            handle_no_match()
+    return pairs
+
+
+print(get_pairs())
 
 # get initial preferences for each player
 # implement pair tracking
